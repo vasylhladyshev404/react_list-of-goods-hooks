@@ -17,9 +17,13 @@ export const goodsFromServer = [
 
 export const App: React.FC = () => {
   const [goods, setGoods] = useState([...goodsFromServer]);
+  const [isSortedAlpha, setSortedAlpha] = useState(false);
+  const [isSortedLen, setSortedLen] = useState(false);
+  const [isReversed, setIsReversed] = useState(false);
 
   function sortAlphabetically() {
     setGoods(goods.sort())
+    setSortedAlpha((isSortedAlpha) => !isSortedAlpha)
   }
 
   function sortLenght() {
@@ -32,14 +36,20 @@ export const App: React.FC = () => {
         return 0
       }
     }))
+    setSortedLen((isSortedLen) => !isSortedLen)
   }
 
   function reverse() {
     setGoods(goods.reverse())
+    setIsReversed((isReversed) => !isReversed)
+    
   }
 
   function reset() {
     setGoods(goodsFromServer)
+    setSortedAlpha(false)
+    setSortedLen(false)
+    setIsReversed(false)
   }
 
 
@@ -57,10 +67,11 @@ export const App: React.FC = () => {
         <button type="button" className="button is-warning is-light" onClick={reverse}>
           Reverse
         </button>
-
-        <button type="button" className="button is-danger is-light" onClick={reset}>
-          Reset
-        </button>
+        {(isReversed || isSortedAlpha || isSortedLen) && 
+          <button type="button" className="button is-danger is-light" onClick={reset}>
+            Reset
+          </button>
+        }
       </div>
 
       <ul>
