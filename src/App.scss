@@ -2,19 +2,18 @@ iframe {
   display: none;
 }
 .active-btn {
-  border: 2px solid #3273dc; // default blue outline
+  border: 2px solid #3273dc;
   box-shadow: 0 0 0 2px rgba(50, 115, 220, 0.2);
-}
-
-/* Optional: customize by type */
-.button.is-success.active-btn {
-  border-color: #48c774;
-  box-shadow: 0 0 0 2px rgba(72, 199, 116, 0.2);
 }
 
 .button.is-warning.active-btn {
   border-color: #ffdd57;
   box-shadow: 0 0 0 2px rgba(255, 221, 87, 0.3);
+}
+
+.button.is-success.active-btn {
+  border-color: #48c774;
+  box-shadow: 0 0 0 2px rgba(72, 199, 116, 0.2);
 }
 
 .button.is-info.active-btn {

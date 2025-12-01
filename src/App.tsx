@@ -22,27 +22,18 @@ export const App: React.FC = () => {
   const [isReversed, setIsReversed] = useState(false);
 
   function sortAlphabetically() {
-    setGoods(goods.sort())
-    setSortedAlpha((isSortedAlpha) => !isSortedAlpha)
+    setGoods([...goods].sort());
+    setSortedAlpha(prev => !prev);
   }
 
   function sortLenght() {
-    setGoods(goods.sort((a:string, b:string): number => {
-      if(a.length > b.length) {
-        return 1
-      } else if (a.length < b.length) {
-        return -1
-      } else {
-        return 0
-      }
-    }))
-    setSortedLen((isSortedLen) => !isSortedLen)
+    setGoods([...goods].sort((a, b) => a.length - b.length));
+    setSortedLen(prev => !prev);
   }
 
   function reverse() {
-    setGoods(goods.reverse())
-    setIsReversed((isReversed) => !isReversed)
-    
+    setGoods([...goods].reverse());
+    setIsReversed(prev => !prev);
   }
 
   function reset() {
@@ -58,7 +49,7 @@ export const App: React.FC = () => {
       <div className="buttons">
         <button
           type="button"
-          className={`button is-info is-light ${isSortedAlpha ? "active-btn" : ""}`}
+          className={`button is-info ${isSortedAlpha ? "active-btn" : "is-light"}`}
           onClick={sortAlphabetically}
         >
           Sort alphabetically
@@ -66,7 +57,7 @@ export const App: React.FC = () => {
 
         <button
           type="button"
-          className={`button is-success is-light ${isSortedLen ? "active-btn" : ""}`}
+          className={`button is-success ${isSortedLen ? "active-btn" : "is-light"}`}
           onClick={sortLenght}
         >
           Sort by length
@@ -74,7 +65,7 @@ export const App: React.FC = () => {
 
         <button
           type="button"
-          className={`button is-warning is-light ${isReversed ? "active-btn" : ""}`}
+          className={`button is-warning ${isReversed ? "active-btn" : "is-light"}`}
           onClick={reverse}
         >
           Reverse
