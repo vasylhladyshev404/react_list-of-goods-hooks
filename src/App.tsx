@@ -56,15 +56,27 @@ export const App: React.FC = () => {
   return (
     <div className="section content">
       <div className="buttons">
-        <button type="button" className="button is-info is-light" onClick={sortAlphabetically}>
+        <button
+          type="button"
+          className={`button is-info is-light ${isSortedAlpha ? "active-btn" : ""}`}
+          onClick={sortAlphabetically}
+        >
           Sort alphabetically
         </button>
 
-        <button type="button" className="button is-success is-light" onClick={sortLenght}>
+        <button
+          type="button"
+          className={`button is-success is-light ${isSortedLen ? "active-btn" : ""}`}
+          onClick={sortLenght}
+        >
           Sort by length
         </button>
 
-        <button type="button" className="button is-warning is-light" onClick={reverse}>
+        <button
+          type="button"
+          className={`button is-warning is-light ${isReversed ? "active-btn" : ""}`}
+          onClick={reverse}
+        >
           Reverse
         </button>
         {(isReversed || isSortedAlpha || isSortedLen) && 
