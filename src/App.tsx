@@ -22,25 +22,31 @@ export const App: React.FC = () => {
   const [isReversed, setIsReversed] = useState(false);
 
   function sortAlphabetically() {
-    setGoods([...goods].sort((a, b) => a.localeCompare(b)));
-    setSortedAlpha(prev => !prev);
+    setGoods([...goodsFromServer].sort((a, b) => a.localeCompare(b)));
+    setSortedAlpha(true);
+    setSortedLen(false);
+    setIsReversed(false);
   }
 
-  function sortLenght() {
-    setGoods([...goods].sort((a, b) => a.length - b.length));
-    setSortedLen(prev => !prev);
+  function sortLength() {
+    setGoods([...goodsFromServer].sort((a, b) => a.length - b.length));
+    setSortedLen(true);
+    setSortedAlpha(false);
+    setIsReversed(false);
   }
 
   function reverse() {
     setGoods([...goods].reverse());
-    setIsReversed(prev => !prev);
+    setIsReversed(true);
+    setSortedAlpha(false);
+    setSortedLen(false);
   }
 
   function reset() {
-    setGoods(goodsFromServer)
-    setSortedAlpha(false)
-    setSortedLen(false)
-    setIsReversed(false)
+    setGoods([...goodsFromServer]);
+    setSortedAlpha(false);
+    setSortedLen(false);
+    setIsReversed(false);
   }
 
 
@@ -58,7 +64,7 @@ export const App: React.FC = () => {
         <button
           type="button"
           className={`button is-success ${isSortedLen ? "active-btn" : "is-light"}`}
-          onClick={sortLenght}
+          onClick={sortLength}
         >
           Sort by length
         </button>
