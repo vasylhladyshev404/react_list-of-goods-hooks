@@ -22,7 +22,7 @@ export const App: React.FC = () => {
   const [isReversed, setIsReversed] = useState(false);
 
   function sortAlphabetically() {
-    setGoods([...goods].sort());
+    setGoods([...goods].sort((a, b) => a.localeCompare(b)));
     setSortedAlpha(prev => !prev);
   }
 
